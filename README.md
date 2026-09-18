@@ -223,3 +223,15 @@ The test set predictions were formatted to match Kaggle competition requirements
 1. **Target Encoding & Deep Interactions:** Explore cross-feature interaction terms like `Pclass_Sex` and `Fare_per_Person`.
 2. **Stacking / Voting Classifiers:** Combine Logistic Regression and Gradient Boosting predictions through a soft-voting ensemble meta-estimator.
 3. **Advanced Cabin Deck Imputation:** Impute missing cabin decks using ticket number clusters and passenger family links.
+
+---
+
+## 🧪 14. Automated Testing & Continuous Integration
+Run the automated test suite locally to verify pipeline transformations and feature engineering logic:
+```bash
+pytest tests
+```
+The test suite validates:
+- Title extraction correctly categorizes standard and rare honorifics.
+- `FamilySize` and `IsAlone` calculations follow exact domain specifications.
+- `ColumnTransformer` handles numerical and categorical transformations with zero data leakage.
