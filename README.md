@@ -2,6 +2,7 @@
 ### Comprehensive Classification Benchmark & Survival Prediction Pipeline
 
 [![Python 3.11](https://img.shields.io/badge/python-3.11-blue.svg)](https://www.python.org/downloads/)
+[![CI](https://github.com/subhankarbiswal57-hue/CINTEL-Task/actions/workflows/ci.yml/badge.svg)](https://github.com/subhankarbiswal57-hue/CINTEL-Task/actions)
 [![Scikit-Learn](https://img.shields.io/badge/scikit--learn-1.3+-orange.svg)](https://scikit-learn.org/)
 [![XGBoost](https://img.shields.io/badge/xgboost-3.2+-red.svg)](https://xgboost.readthedocs.io/)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
