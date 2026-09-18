@@ -51,6 +51,16 @@ def engineer_features(df: pd.DataFrame) -> pd.DataFrame:
     - Title: Extracted from Name (proxy for age, marital/social status)
     - FamilySize: SibSp + Parch + 1 (total travel party size)
     - IsAlone: 1 if traveling solo, 0 otherwise
+
+    Parameters
+    ----------
+    df : pd.DataFrame
+        Input passenger dataframe containing 'Name', 'SibSp', and 'Parch'.
+
+    Returns
+    -------
+    pd.DataFrame
+        Copy of input dataframe with engineered features appended.
     """
     df = df.copy()
     if 'Name' in df.columns:
