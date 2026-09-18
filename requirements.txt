@@ -12,3 +12,7 @@ seaborn>=0.12.0
 # Interactive Notebook Environment
 jupyterlab>=4.0.0
 notebook>=7.0.0
+
+# Testing & Code Quality
+pytest>=7.4.0
+mypy>=1.5.0
