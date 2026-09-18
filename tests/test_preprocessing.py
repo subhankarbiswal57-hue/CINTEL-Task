@@ -42,3 +42,19 @@ def test_build_preprocessor():
     assert 'Age' in num_cols
     assert 'Sex' in cat_cols
     assert preprocessor is not None
+
+    sample_df = pd.DataFrame({
+        'Age': [22.0, 38.0],
+        'SibSp': [1, 0],
+        'Parch': [0, 0],
+        'Fare': [7.25, 71.2833],
+        'FamilySize': [2, 1],
+        'IsAlone': [0, 1],
+        'Sex': ['male', 'female'],
+        'Embarked': ['S', 'C'],
+        'Pclass': [3, 1],
+        'Title': ['Mr', 'Mrs']
+    })
+    transformed = preprocessor.fit_transform(sample_df)
+    assert transformed.shape[0] == 2
+    assert transformed.shape[1] > 0
