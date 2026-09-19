@@ -24,10 +24,16 @@ Thank you for your interest in contributing to the **Titanic Survival Prediction
    pip install -r requirements.txt
    ```
 
-4. **Code Quality Standards**:
+4. **Run Unit Tests**:
+   ```bash
+   pytest tests
+   ```
+   Ensure all unit tests pass before committing or proposing changes.
+
+5. **Code Quality Standards**:
    - Follow PEP 8 guidelines for formatting.
    - Maintain strict separation between feature engineering, validation, and testing to prevent data leakage.
-   - Run tests before submitting a Pull Request.
+   - All contributions must include corresponding unit tests when introducing new functionality.
 
 ## Reporting Issues
 If you encounter any bugs or data inconsistencies, please open an Issue with steps to reproduce.
