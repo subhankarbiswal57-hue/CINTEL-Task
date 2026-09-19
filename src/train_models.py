@@ -101,14 +101,29 @@ def build_preprocessor():
     return preprocessor, numeric_features, categorical_features
 
 
+def parse_arguments():
+    """Parse command line options for the training pipeline."""
+    import argparse
+    parser = argparse.ArgumentParser(
+        description="Titanic Survival Prediction & Model Evaluation Benchmark"
+    )
+    parser.add_argument('--data-dir', type=str, default=None, help="Directory containing train.csv and test.csv")
+    parser.add_argument('--results-dir', type=str, default=None, help="Directory to output benchmark metrics and plots")
+    parser.add_argument('--submission-dir', type=str, default=None, help="Directory to save generated Kaggle submission")
+    parser.add_argument('--random-state', type=int, default=42, help="Seed for reproducibility across train/val split and models")
+    return parser.parse_args()
+
+
 def main():
     import sys
     sys.stdout.reconfigure(line_buffering=True)
-    # Setup paths relative to project root
+    args = parse_arguments()
+
+    # Setup paths relative to project root or use CLI arguments if supplied
     base_dir = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
-    data_dir = os.path.join(base_dir, 'data')
-    results_dir = os.path.join(base_dir, 'results')
-    submission_dir = os.path.join(base_dir, 'submission')
+    data_dir = args.data_dir if args.data_dir else os.path.join(base_dir, 'data')
+    results_dir = args.results_dir if args.results_dir else os.path.join(base_dir, 'results')
+    submission_dir = args.submission_dir if args.submission_dir else os.path.join(base_dir, 'submission')
 
     os.makedirs(results_dir, exist_ok=True)
     os.makedirs(submission_dir, exist_ok=True)
