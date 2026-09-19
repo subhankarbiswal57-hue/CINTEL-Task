@@ -157,11 +157,12 @@ def main():
     print(f"Engineered Features used: {feature_cols}")
 
     # 4. Train-Test Split (80/20 Stratified)
+    seed = args.random_state
     print("\n" + "=" * 70)
-    print("4. TRAIN-TEST SPLIT (80% Train, 20% Test, Stratified, random_state=42)")
+    print(f"4. TRAIN-TEST SPLIT (80% Train, 20% Test, Stratified, random_state={seed})")
     print("=" * 70)
     X_train, X_val, y_train, y_val = train_test_split(
-        X, y, test_size=0.20, random_state=42, stratify=y
+        X, y, test_size=0.20, random_state=seed, stratify=y
     )
     print(f"X_train shape: {X_train.shape}, y_train shape: {y_train.shape}")
     print(f"X_val shape:   {X_val.shape}, y_val shape:   {y_val.shape}")
@@ -172,19 +173,19 @@ def main():
     models = {
         'Logistic Regression': Pipeline([
             ('preprocessor', preprocessor),
-            ('classifier', LogisticRegression(max_iter=1000, random_state=42))
+            ('classifier', LogisticRegression(max_iter=1000, random_state=seed))
         ]),
         'Random Forest': Pipeline([
             ('preprocessor', preprocessor),
-            ('classifier', RandomForestClassifier(n_estimators=100, max_depth=6, random_state=42))
+            ('classifier', RandomForestClassifier(n_estimators=100, max_depth=6, random_state=seed))
         ]),
         'Gradient Boosting': Pipeline([
             ('preprocessor', preprocessor),
-            ('classifier', GradientBoostingClassifier(n_estimators=100, learning_rate=0.08, max_depth=3, random_state=42))
+            ('classifier', GradientBoostingClassifier(n_estimators=100, learning_rate=0.08, max_depth=3, random_state=seed))
         ]),
         'XGBoost': Pipeline([
             ('preprocessor', preprocessor),
-            ('classifier', xgb.XGBClassifier(n_estimators=100, learning_rate=0.08, max_depth=3, random_state=42, eval_metric='logloss'))
+            ('classifier', xgb.XGBClassifier(n_estimators=100, learning_rate=0.08, max_depth=3, random_state=seed, eval_metric='logloss'))
         ])
     }
 
@@ -192,7 +193,7 @@ def main():
     print("\n" + "=" * 70)
     print("5. 5-FOLD STRATIFIED CROSS-VALIDATION (ON TRAINING SET)")
     print("=" * 70)
-    cv = StratifiedKFold(n_splits=5, shuffle=True, random_state=42)
+    cv = StratifiedKFold(n_splits=5, shuffle=True, random_state=seed)
     cv_scores = {}
 
     for name, model in models.items():
