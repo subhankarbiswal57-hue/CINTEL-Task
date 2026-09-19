@@ -192,9 +192,13 @@ pip install -r requirements.txt
 
 ### Step 4: Execute the Training & Evaluation Pipeline
 ```bash
+# Default execution (standard paths and random_state=42)
 python src/train_models.py
+
+# Custom execution with configurable CLI flags
+python src/train_models.py --data-dir data --results-dir results --submission-dir submission --random-state 42
 ```
-This single command:
+This command:
 1. Loads the datasets from `data/`.
 2. Applies preprocessing and feature engineering.
 3. Performs 5-fold cross-validation across all 4 models.
@@ -202,6 +206,12 @@ This single command:
 5. Saves all comparison CSVs and visualization plots into `results/`.
 6. Executes hyperparameter tuning and sample inference.
 7. Produces `submission/submission.csv` ready for Kaggle upload.
+
+**Supported CLI Options:**
+- `--data-dir`: Custom path to folder containing `train.csv` and `test.csv`.
+- `--results-dir`: Output directory for generated CSV benchmarks and visualization figures.
+- `--submission-dir`: Output folder for final `submission.csv`.
+- `--random-state`: Seed integer controlling cross-validation splits and model initialization (default: 42).
 
 ### Step 5: Run the Jupyter Notebook
 ```bash
