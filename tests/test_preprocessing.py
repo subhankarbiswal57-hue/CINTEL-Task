@@ -14,6 +14,11 @@ def test_extract_title():
     assert extract_title("Futrelle, Mlle. Lily") == "Miss"
     assert extract_title("Reynaldo, Ms. Encarnacion") == "Miss"
     assert extract_title("Duff Gordon, Lady. (Lucille Christiana)") == "Rare"
+    # Unmatched title pattern fallback
+    assert extract_title("Anonymous Passenger") == "Rare"
+    # Unusual title mapping to Rare
+    assert extract_title("Morrow, Col. John") == "Rare"
+    assert extract_title("Leader, Dr. Alice (Farnham)") == "Rare"
 
 
 def test_engineer_features():
