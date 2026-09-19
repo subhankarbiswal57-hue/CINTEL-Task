@@ -58,3 +58,24 @@ def test_build_preprocessor():
     transformed = preprocessor.fit_transform(sample_df)
     assert transformed.shape[0] == 2
     assert transformed.shape[1] > 0
+
+
+def test_missing_value_imputation():
+    """Verify that numerical and categorical missing values are imputed properly."""
+    import numpy as np
+    preprocessor, _, _ = build_preprocessor()
+    df_missing = pd.DataFrame({
+        'Age': [np.nan, 30.0],
+        'SibSp': [0, 1],
+        'Parch': [0, 0],
+        'Fare': [15.0, np.nan],
+        'FamilySize': [1, 2],
+        'IsAlone': [1, 0],
+        'Sex': ['female', 'male'],
+        'Embarked': [np.nan, 'S'],
+        'Pclass': [1, 3],
+        'Title': ['Mrs', 'Mr']
+    })
+    transformed = preprocessor.fit_transform(df_missing)
+    assert not np.isnan(transformed).any(), "Transformed output should not contain any NaN values"
+
