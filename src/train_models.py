@@ -5,6 +5,9 @@ Objective: Predict passenger survival (Survived = 0 or 1) and evaluate/compare
 multiple ML classification models with zero data leakage.
 """
 
+__version__ = "1.2.0"
+__author__ = "CINTEL Team"
+
 import os
 import re
 import numpy as np
