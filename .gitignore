@@ -24,6 +24,11 @@ ENV/
 .coverage
 htmlcov/
 
+# Build & Packaging artifacts
+dist/
+build/
+*.egg-info/
+
 # OS artifacts
 .DS_Store
 Thumbs.db
